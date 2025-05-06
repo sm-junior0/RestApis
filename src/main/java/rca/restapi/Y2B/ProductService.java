@@ -22,4 +22,15 @@ public class ProductService {
     public Optional<Product> getProduct(Long prodId) {
         return repository.findById(prodId);
     }
+
+    public void updateProduct(Long prodId, Product updatedProduct) {
+        if (repository.existsById(prodId)) {
+            updatedProduct.setProductId(prodId);
+            repository.save(updatedProduct);
+        }
+    }
+
+    public void deleteProduct(Long prodId) {
+        repository.deleteById(prodId);
+    }
 }
